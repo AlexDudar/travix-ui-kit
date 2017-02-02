@@ -1,13 +1,14 @@
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 
-const outputDir = './dist/';
+const outputDir = path.join(__dirname, '..', 'dist');
 
 module.exports = {
   entry: {
     dist: [
-      './components/index.scss',
-      './components/index.js',
+      '../components/index.scss',
+      '../components/index.js',
     ],
   },
 

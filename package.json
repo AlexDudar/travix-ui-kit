@@ -17,6 +17,9 @@
     "lint": "eslint --color '{components,tests,utils,scripts}/**/*.js'",
     "transpile": "npm run build"
   },
+  "bin": {
+    "travix-ui-kit": "./builder/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:Travix-International/travix-ui-kit.git"
