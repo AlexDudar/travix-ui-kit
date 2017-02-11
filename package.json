@@ -4,10 +4,8 @@
   "description": "Travix UI kit",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm run build-theme && webpack && babel --copy-files ./components --out-dir lib --ignore *.scss,*.md",
-    "build:watch": "npm run build-theme:watch & webpack --watch& babel --copy-files ./components --out-dir lib --ignore *.scss,*.md -w",
-    "build-theme": "node bin/build-theme.js",
-    "build-theme:watch": "node bin/build-theme.js --watch",
+    "build": "node ./builder && babel --copy-files ./components --out-dir lib --ignore *.scss,*.md",
+    "build:watch": "node ./builder -w && babel --copy-files ./components --out-dir lib --ignore *.scss,*.md -w",
     "styleguide-server": "styleguidist server",
     "styleguide-build": "styleguidist build",
     "test": "jest -c ./tests/jest.config.json",
