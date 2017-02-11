@@ -115,8 +115,6 @@ use file `node_modules/travix-ui-kit/dist/bundle.css`
 #### Start developing
 
 - `npm run build:watch` to build the themes, styles and javascript on each file change
-- `npm run build-theme:watch` to build the themes on each theme change
-- `THEME_PATH=/some/path/to/theme.yaml npm run build` to pass other than default theme. Theme must be a valid yaml file
 - `npm run styleguide-server` to run web service with livingstyle guide and review changes
 
 #### Testing
