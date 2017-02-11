@@ -3,6 +3,13 @@ const path = require('path');
 const saveThemeScssFile = require('./saveThemeScssFile');
 const themeBuilder = require('theme-builder');
 
+/**
+ * Generates the themes/theme.scss file, based on a given YAML file.
+ *
+ * @function generateThemeFile
+ * @param {String} yamlFile File path to a YAML file with the styles' definitions.
+ * @return {Promise}
+ */
 function generateThemeFile(yamlFile) {
   return new Promise((resolve, reject) => {
     fs.readFile(yamlFile, { encoding: 'utf-8' }, (err, content) => {
@@ -17,6 +24,15 @@ function generateThemeFile(yamlFile) {
   }).then(saveThemeScssFile);
 }
 
+/**
+ * Triggers the generation of the theme file (theme.scss)
+ * and handles the watch mode.
+ *
+ * @module getStylesAndSaveTheme
+ * @param {String}  [themeFile]      Path to a custom YAML file with styles' definitions.
+ * @param {Boolean} [isWatchEnabled] Flag that enables the 'watch mode' when true. Default: false.
+ * @return {Promise}
+ */
 module.exports = (themeFile, isWatchEnabled) => new Promise((resolve, reject) => {
   const yamlFile = themeFile || path.join(__dirname, '..', 'themes', '_default.yaml');
 

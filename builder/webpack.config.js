@@ -4,6 +4,10 @@ const path = require('path');
 
 const outputDir = path.join(__dirname, '..', 'dist');
 
+/**
+ * @module webpack.config
+ * @type {Object}
+ */
 module.exports = {
   entry: {
     dist: [
