@@ -1,6 +1,5 @@
-const getStyles = require('./getStyles');
+const getStylesAndSaveTheme = require('./getStylesAndSaveTheme');
 const runWebpackAndCopyFilesToFinalDestination = require('./runWebpackAndCopyFilesToFinalDestination');
-const saveThemeScssFile = require('./saveThemeScssFile');
 const webpackConfig = require('./webpack.config');
 
 const webpackNodeEnv = {
@@ -8,9 +7,8 @@ const webpackNodeEnv = {
 };
 
 module.exports = ({ cssDir, jsDir, themeFile, watch }) => {
-  return getStyles(themeFile)
-    .then(themeCss => saveThemeScssFile(themeCss))
-    .then(() => runWebpackAndCopyFilesToFinalDestination({
+  return getStylesAndSaveTheme(themeFile, watch)
+    .then(runWebpackAndCopyFilesToFinalDestination({
       webpackConfig,
       webpackNodeEnv,
       cssDir,
