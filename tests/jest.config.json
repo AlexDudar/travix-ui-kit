@@ -1,5 +1,9 @@
 {
   "collectCoverage": true,
+  "collectCoverageFrom": [
+    "builder/**/*.js",
+    "components/**/*.js"
+  ],
   "moduleFileExtensions": [
     "js",
     "json"
