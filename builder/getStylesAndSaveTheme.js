@@ -1,28 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const saveThemeScssFile = require('./saveThemeScssFile');
-const themeBuilder = require('theme-builder');
-
-/**
- * Generates the themes/theme.scss file, based on a given YAML file.
- *
- * @function generateThemeFile
- * @param {String} yamlFile File path to a YAML file with the styles' definitions.
- * @return {Promise}
- */
-function generateThemeFile(yamlFile) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(yamlFile, { encoding: 'utf-8' }, (err, content) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      const themeChunks = themeBuilder(content, 'scss', { prefix: 'tx' });
-      resolve(themeChunks.join('\n'));
-    });
-  }).then(saveThemeScssFile);
-}
+const generateThemeFile = require('./generateThemeFile');
 
 /**
  * Triggers the generation of the theme file (theme.scss)
@@ -38,10 +16,10 @@ module.exports = (themeFile, isWatchEnabled) => new Promise((resolve, reject) =>
 
   if (isWatchEnabled) {
     fs.watch(yamlFile, { persistent: true }, () => {
-      generateThemeFile(yamlFile).catch(reject); /** TODO: Do proper error handling on watch mode */
+      /** TODO: Do proper error handling on watch mode */
+      generateThemeFile(yamlFile).catch(reject);
     });
   }
 
   generateThemeFile(yamlFile).then(resolve).catch(reject);
-  resolve();
 });
