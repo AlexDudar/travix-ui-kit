@@ -2,7 +2,9 @@
   "collectCoverage": true,
   "collectCoverageFrom": [
     "builder/**/*.js",
-    "components/**/*.js"
+    "!builder/webpack.config.js",
+    "components/**/*.js",
+    "!components/index.js"
   ],
   "moduleFileExtensions": [
     "js",
